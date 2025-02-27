@@ -3,9 +3,12 @@
         <h1 class="text-2xl font-medium">@yield('title', 'Dashboard')</h1>
         <div class="flex items-center gap-4">
             @auth
-                <a href="{{ route('profile.edit') }}" class="text-sm text-[#1b1b18] dark:text-[#EDEDEC] hover:text-[#f53003] dark:hover:text-[#FF4433]">
+                <span class="text-lm text-[#1b1b18] dark:text-[#EDEDEC]">
+                    {{ Auth::user()->name }}
+                </span>
+                {{-- <a href="{{ route('profile.edit') }}" class="text-sm text-[#1b1b18] dark:text-[#EDEDEC] hover:text-[#f53003] dark:hover:text-[#FF4433]">
                     Perfil
-                </a>
+                </a> --}}
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
                     <button type="submit" class="text-sm text-[#1b1b18] dark:text-[#EDEDEC] hover:text-[#f53003] dark:hover:text-[#FF4433]">
