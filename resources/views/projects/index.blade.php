@@ -28,7 +28,7 @@
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                                    {{-- {{ $project->name }} --}}
+                                    {{ $project->name }}
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

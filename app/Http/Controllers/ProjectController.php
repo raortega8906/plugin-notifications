@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
-use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +14,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('user_id', Auth::user()->id);
+        $projects = Project::where('user_id', Auth::user()->id)->get();
 
         return view('projects.index', compact('projects'));
     }
@@ -36,9 +35,7 @@ class ProjectController extends Controller
         $validated = $request->validated();
         $validated['user_id'] = Auth::user()->id;
 
-        $project = Project::create($validated);
-
-        // dd($project);
+        Project::create($validated);
 
         return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente');
     }
