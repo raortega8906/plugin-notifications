@@ -32,7 +32,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-end gap-2">
-                                <a href="" class="text-[#927f32] dark:text-[#b4a751] hover:text-[#d8c558] dark:hover:text-[#c7a750]">
+                                <a href="{{ route('projects.edit', $project) }}" class="text-[#927f32] dark:text-[#b4a751] hover:text-[#d8c558] dark:hover:text-[#c7a750]">
                                     Editar
                                 </a>
                                 <form action="{{ route('projects.destroy', $project) }}" method="POST">
