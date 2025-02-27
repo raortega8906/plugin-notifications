@@ -10,11 +10,15 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen">
-    @yield('content')
+<body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen flex">
+    @include('layouts.sidebar')
+    <div class="flex-1 flex flex-col">
+        @include('layouts.navigation')
+        <main class="flex-1 p-6 ml-64">
+            @yield('content')
+        </main>
+    </div>
 </body>
 </html>
-
