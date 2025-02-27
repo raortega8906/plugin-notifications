@@ -28,5 +28,6 @@ Route::post('/projects/{project}/plugins', [PluginController::class, 'store'])->
 Route::get('/projects/{project}/plugins/{plugin}/edit', [PluginController::class, 'edit'])->name('plugins.edit');
 Route::put('/projects/{project}/plugins/{plugin}', [PluginController::class, 'update'])->name('plugins.update');
 Route::delete('/projects/{project}/plugins/{plugin}', [PluginController::class, 'destroy'])->name('plugins.destroy');
+Route::get('/pluginsmonitoring', [PluginController::class, 'pluginsMonitoring'])->name('plugins.monitoring');
 
 require __DIR__.'/auth.php';

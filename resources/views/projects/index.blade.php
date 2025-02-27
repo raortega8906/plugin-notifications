@@ -18,6 +18,9 @@
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
                             Nombre
                         </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider flex justify-center">
+                            Cantidad de plugins
+                        </th>
                         <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
                             Acciones
                         </th>
@@ -31,9 +34,14 @@
                                     {{ $project->name }}
                                 </div>
                             </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC] flex justify-center gap-2">
+                                    {{ $project->plugins->count() }} 
+                                </div>
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-end gap-2">
                                 <a href="{{ route('projects.show', $project) }}" class="text-[#329232] dark:text-[#51b454] hover:text-[#d8c558] dark:hover:text-[#c7a750]">
-                                    Ver
+                                    Ver Plugins
                                 </a>
                                 <a href="{{ route('projects.edit', $project) }}" class="text-[#927f32] dark:text-[#b4a751] hover:text-[#d8c558] dark:hover:text-[#c7a750]">
                                     Editar

@@ -6,6 +6,7 @@ use App\Http\Requests\StorePluginRequest;
 use App\Http\Requests\UpdatePluginRequest;
 use App\Models\Plugin;
 use App\Models\Project;
+use App\Models\User;
 
 class PluginController extends Controller
 {
@@ -75,5 +76,12 @@ class PluginController extends Controller
         $plugin->delete();
 
         return redirect()->route('plugins.index', compact('project'))->with('danger', 'Plugin eliminado exitosamente');
+    }
+
+    public function pluginsMonitoring()
+    {
+        $plugins = Plugin::all();
+
+        return view('plugins.index', compact('plugins'));
     }
 }
