@@ -15,4 +15,9 @@ class Project extends Model
     {
         $this->belongsTo(User::class);
     }
+
+    public function plugins()
+    {
+        $this->hasMany(Plugin::class);
+    }
 }
