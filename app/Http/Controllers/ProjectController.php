@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,15 +25,22 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['user_id'] = Auth::user()->id;
+
+        $project = Project::create($validated);
+
+        // dd($project);
+
+        return redirect()->route('projects.index')->with('success', 'Proyecto creado exitosamente');
     }
 
     /**

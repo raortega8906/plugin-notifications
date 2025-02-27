@@ -7,7 +7,7 @@
     <div class="max-w-md mx-auto bg-white dark:bg-[#161615] shadow-md rounded-lg overflow-hidden">
         <div class="p-6">
             <h2 class="text-2xl font-medium mb-6">Crear Nuevo Proyecto</h2>
-            <form action="" method="POST">
+            <form action="{{ route('projects.store') }}" method="POST">
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-medium mb-1 text-[#706f6c] dark:text-[#A1A09A]">
@@ -24,7 +24,7 @@
                 <div class="flex justify-end">
                     <button 
                         type="submit" 
-                        class="bg-[#f53003] hover:bg-[#d42a02] text-white font-bold py-2 px-4 rounded"
+                        class="bg-[#647765] hover:bg-[#7e9d88] text-white py-2 px-4 rounded"
                     >
                         Crear Proyecto
                     </button>

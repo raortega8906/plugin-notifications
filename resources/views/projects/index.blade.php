@@ -5,7 +5,7 @@
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
-        <a href="" class="bg-[#f53003] hover:bg-[#d42a02] text-[#3E3E3A] font-bold py-2 px-4 rounded">
+        <a href="{{ route('projects.create') }}" class="bg-[#35415f] hover:bg-[#5b597c] text-white py-2 px-4 rounded">
             Nuevo Proyecto
         </a>
     </div>
@@ -28,7 +28,7 @@
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                                    {{ $project->name }}
+                                    {{-- {{ $project->name }} --}}
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
