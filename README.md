@@ -31,5 +31,5 @@ Follow these steps to set up the project locally:
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/yourusername/pluginguard.git
-    cd pluginguard
+    git clone https://github.com/yourusername/plugin-notifications.git
+    cd plugin-notifications
