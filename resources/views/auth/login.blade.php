@@ -37,9 +37,9 @@
                         Contraseña
                     </label>
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" class="text-sm text-[#f53003] dark:text-[#FF4433] hover:underline">
+                        {{-- <a href="{{ route('password.request') }}" class="text-sm text-[#f53003] dark:text-[#FF4433] hover:underline">
                             ¿Olvidaste tu contraseña?
-                        </a>
+                        </a> --}}
                     @endif
                 </div>
                 <input 
