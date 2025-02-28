@@ -15,6 +15,9 @@
         <a href="{{ route('plugins.monitoring') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('plugins.monitoring') ? 'bg-[#fff2f2] dark:bg-[#1D0002] text-[#f53003] dark:text-[#FF4433]' : 'text-[#1b1b18] dark:text-[#EDEDEC] hover:bg-[#fff2f2] dark:hover:bg-[#1D0002]' }}">
             Plugins Monitoreados
         </a>
+        <a href="{{ route('api.index') }}" class="block px-4 py-2 text-sm {{ request()->routeIs('api.index') ? 'bg-[#fff2f2] dark:bg-[#1D0002] text-[#f53003] dark:text-[#FF4433]' : 'text-[#1b1b18] dark:text-[#EDEDEC] hover:bg-[#fff2f2] dark:hover:bg-[#1D0002]' }}">
+            Vulnerabilidades
+        </a>
         {{-- <a href="#" class="block px-4 py-2 text-sm text-[#1b1b18] dark:text-[#EDEDEC] hover:bg-[#fff2f2] dark:hover:bg-[#1D0002]">
             Notificaciones
         </a>

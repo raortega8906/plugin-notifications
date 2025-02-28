@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\PluginController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
@@ -29,5 +30,8 @@ Route::get('/projects/{project}/plugins/{plugin}/edit', [PluginController::class
 Route::put('/projects/{project}/plugins/{plugin}', [PluginController::class, 'update'])->name('plugins.update');
 Route::delete('/projects/{project}/plugins/{plugin}', [PluginController::class, 'destroy'])->name('plugins.destroy');
 Route::get('/pluginsmonitoring', [PluginController::class, 'pluginsMonitoring'])->name('plugins.monitoring');
+
+// Rutas de API
+Route::get('/vulnerabilities', [ApiController::class, 'index'])->name('api.index');
 
 require __DIR__.'/auth.php';
