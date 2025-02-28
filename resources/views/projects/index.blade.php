@@ -43,9 +43,11 @@
                                 <a href="{{ route('projects.show', $project) }}" class="text-[#329232] dark:text-[#51b454] hover:text-[#d8c558] dark:hover:text-[#c7a750]">
                                     Ver Plugins
                                 </a>
+                                |
                                 <a href="{{ route('projects.edit', $project) }}" class="text-[#927f32] dark:text-[#b4a751] hover:text-[#d8c558] dark:hover:text-[#c7a750]">
                                     Editar
                                 </a>
+                                |
                                 <form action="{{ route('projects.destroy', $project) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -54,9 +56,6 @@
                                     </button>
                                 </form>
                             </td>
-                            {{-- <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="" class="text-[#f53003] dark:text-[#FF4433] hover:text-[#d42a02] dark:hover:text-[#ff6b5b]">Editar</a>
-                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>

@@ -51,6 +51,7 @@
                                 <a href="{{ route('plugins.edit', ['project' => $project, 'plugin' => $plugin]) }}" class="text-[#927f32] dark:text-[#b4a751] hover:text-[#d8c558] dark:hover:text-[#c7a750]">
                                     Editar
                                 </a>
+                                |
                                 <form action="{{ route('plugins.destroy', ['project' => $project, 'plugin' => $plugin]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
