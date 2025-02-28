@@ -61,7 +61,7 @@
         </div>
     @else --}}
         <div class="bg-white dark:bg-[#161615] shadow-md rounded-lg p-6 text-center">
-            <p class="text-[#706f6c] dark:text-[#A1A09A]">{{ __('No hay proyectos registrados') }}</p>
+            <p class="text-[#706f6c] dark:text-[#A1A09A]">{{ __('No hay vulnerabilidades de plugins registradas') }}</p>
         </div>
     {{-- @endif --}}
 </div>
