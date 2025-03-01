@@ -19,6 +19,9 @@
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
                             Versión
                         </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
+                            Proyecto
+                        </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white dark:bg-[#161615] divide-y divide-[#e3e3e0] dark:divide-[#3E3E3A]">
@@ -37,6 +40,11 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
                                     {{ $plugin->version }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
+                                    {{ $plugin->project->name }}
                                 </div>
                             </td>
                         </tr>

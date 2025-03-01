@@ -31,7 +31,9 @@ Route::put('/projects/{project}/plugins/{plugin}', [PluginController::class, 'up
 Route::delete('/projects/{project}/plugins/{plugin}', [PluginController::class, 'destroy'])->name('plugins.destroy');
 Route::get('/pluginsmonitoring', [PluginController::class, 'pluginsMonitoring'])->name('plugins.monitoring');
 
-// Rutas de API
-Route::get('/vulnerabilities', [ApiController::class, 'index'])->name('api.index');
+// Rutas de API - Vulnerabilidades
+Route::get('/vulnerabilities', [ApiController::class, 'index'])->name('api.vulnerabilities');
+Route::get('/filter-vulnerabilities', [ApiController::class, 'filterVulnerabilities'])->name('filter.vulnerabilities');
+
 
 require __DIR__.'/auth.php';
