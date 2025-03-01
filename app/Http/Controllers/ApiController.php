@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
 use App\Models\Plugin;
-use App\Models\Project;
 
 class ApiController extends Controller
 {
