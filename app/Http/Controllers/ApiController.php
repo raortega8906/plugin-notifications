@@ -29,10 +29,10 @@ class ApiController extends Controller
                     foreach ($data['data']['vulnerability'] as $vuln) {
                         $vulnerabilities[] = [
                             'plugin' => $plugin,
-                            'name' => $vuln['name'] ?? 'Desconocido',
                             'version' => $vuln['operator']['max_version'] ?? 'N/A',
                             'description' => $vuln['source'][0]['description'] ?? 'Sin descripción',
-                            'severity' => $vuln['impact']['cwe'][0]['name'] ?? 'Sin datos'
+                            'score' => $vuln['impact']['cvss']['score'] ?? 'Sin datos',
+                            'severity' => $vuln['impact']['cvss']['severity'] ?? 'Sin datos'
                         ];
                     }
                 }
@@ -67,13 +67,13 @@ class ApiController extends Controller
                         $vulnVersion = $vuln['operator']['max_version'] ?? 'N/A';
 
                         // Comparar versiones y filtrar
-                        if ($vulnVersion !== 'N/A' && version_compare($vulnVersion, $version, '<=')) {
+                        if ($vulnVersion !== 'N/A' && version_compare($vulnVersion, $version, '=')) {
                             $vulnerabilities[] = [
                                 'plugin' => $plugin,
-                                'name' => $vuln['name'] ?? 'Desconocido',
                                 'version' => $vulnVersion,
                                 'description' => $vuln['source'][0]['description'] ?? 'Sin descripción',
-                                'severity' => $vuln['impact']['cwe'][0]['name'] ?? 'Sin datos'
+                                'score' => $vuln['impact']['cvss']['score'] ?? 'Sin datos',
+                                'severity' => $vuln['impact']['cvss']['severity'] ?? 'Sin datos'
                             ];
                         }
                     }
@@ -81,7 +81,7 @@ class ApiController extends Controller
             }
         }
 
-        return response()->json($vulnerabilities);
+        return view('filter-vulnerabilities', compact('vulnerabilities'));
     }
     
 }
