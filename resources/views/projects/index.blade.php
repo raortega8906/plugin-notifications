@@ -6,7 +6,7 @@
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
         <a href="{{ route('projects.create') }}" 
-        class="inline-block px-5 py-1.5 border-[#35415f] hover:border-[#1915014a] border text-[#35415f] rounded-sm text-sm leading-normal">
+        class="inline-block px-5 py-1.5 bg-[#35415f] border-[#35415f] hover:border-[#35415f] border text-[#fff] rounded-sm text-sm leading-normal">
             Nuevo Proyecto
         </a>
     </div>

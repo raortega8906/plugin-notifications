@@ -51,7 +51,7 @@
                 <div class="flex justify-end">
                     <button 
                         type="submit" 
-                        class="bg-[#647765] hover:bg-[#7e9d88] text-white py-2 px-4 rounded"
+                        class="inline-block px-5 py-1.5 bg-[#647765] border-[#fff] hover:border-[#fff] border text-[#fff] rounded-sm text-sm leading-normal"
                     >
                         Crear Plugin
                     </button>
