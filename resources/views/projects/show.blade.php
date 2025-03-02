@@ -5,7 +5,8 @@
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
-        <a href="{{ route('plugins.create', $project) }}" class="bg-[#35415f] hover:bg-[#5b597c] text-white py-2 px-4 rounded">
+        <a href="{{ route('plugins.create', $project) }}" 
+        class="inline-block px-5 py-1.5 border-[#35415f] hover:border-[#1915014a] border text-[#35415f] rounded-sm text-sm leading-normal">
             Nuevo Plugin
         </a>
     </div>
