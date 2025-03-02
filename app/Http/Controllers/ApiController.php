@@ -68,13 +68,25 @@ class ApiController extends Controller
 
                         // Comparar versiones y filtrar
                         if ($vulnVersion !== 'N/A' && version_compare($vulnVersion, $version, '=')) {
-                            $vulnerabilities[] = [
-                                'plugin' => $plugin,
-                                'version' => $vulnVersion,
-                                'description' => $vuln['source'][0]['description'] ?? 'Sin descripción',
-                                'score' => $vuln['impact']['cvss']['score'] ?? 'Sin datos',
-                                'severity' => $vuln['impact']['cvss']['severity'] ?? 'Sin datos'
-                            ];
+
+                            if ($vuln['impact'] == []) { 
+                                $vulnerabilities[] = [
+                                    'plugin' => $plugin,
+                                    'version' => $vulnVersion,
+                                    'description' => $vuln['source'][1]['description'] ?? 'Sin descripción',
+                                    'score' => $vuln['source'][0]['name'] ?? 'Sin datos',
+                                    'severity' => $vuln['source'][0]['link'] ?? 'Sin datos'
+                                ];
+                            }
+                            else { 
+                                $vulnerabilities[] = [
+                                    'plugin' => $plugin,
+                                    'version' => $vuln['operator']['max_version'] ?? 'N/A',
+                                    'description' => $vuln['source'][0]['description'] ?? 'Sin descripción',
+                                    'score' => $vuln['impact']['cvss']['score'] ?? 'Sin datos',
+                                    'severity' => $vuln['impact']['cvss']['severity'] ?? 'Sin datos'
+                                ];
+                            }
                         }
                     }
                 }

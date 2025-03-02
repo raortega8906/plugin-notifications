@@ -85,6 +85,10 @@
                                             <span class="text-gray-500 dark:text-gray-400">
                                                 {{ __('Sin datos') }}
                                             </span>
+                                        @elseif($vuln['severity'])
+                                            <span class="text-gray-500 dark:text-gray-400">
+                                                {{ $vuln['severity'] }}
+                                            </span>
                                         @endif
                                     </div>
                                 </td>
