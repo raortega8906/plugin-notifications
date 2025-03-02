@@ -6,7 +6,6 @@ use App\Http\Requests\StorePluginRequest;
 use App\Http\Requests\UpdatePluginRequest;
 use App\Models\Plugin;
 use App\Models\Project;
-use App\Models\User;
 
 class PluginController extends Controller
 {
@@ -15,7 +14,7 @@ class PluginController extends Controller
      */
     public function index(Project $project)
     {
-        $plugins = Plugin::where('project_id', $project->id)->get();
+        $plugins = Plugin::where('project_id', $project->id)->latest()->get();;
 
         return view('projects.show', compact('plugins', 'project'));
     }
@@ -80,7 +79,7 @@ class PluginController extends Controller
 
     public function pluginsMonitoring()
     {
-        $plugins = Plugin::all();
+        $plugins = Plugin::latest()->get();
 
         return view('plugins.index', compact('plugins'));
     }

@@ -17,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('user_id', Auth::user()->id)->get();
+        $projects = Project::where('user_id', Auth::user()->id)->latest()->get();
 
         return view('projects.index', compact('projects'));
     }
@@ -49,7 +49,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         // $plugins = $project->plugins;
-        $plugins = Plugin::where('project_id', $project->id)->get();
+        $plugins = Plugin::where('project_id', $project->id)->latest()->get();;
 
         return view('projects.show', compact('project', 'plugins'));
     }
