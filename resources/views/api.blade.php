@@ -99,4 +99,15 @@
         </div>
     @endif
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchVulnerabilities = document.getElementById('buscar-vulnerabilidades');
+        var historicVulnerabilities = document.getElementById('historial-vulnerabilidades');
+        searchVulnerabilities.addEventListener('click', function () {
+            historicVulnerabilities.innerHTML = 'Buscando...';
+        });
+    });
+</script>
+
 @endsection

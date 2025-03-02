@@ -51,12 +51,16 @@ class ApiController extends Controller
 
         // Obtener slugs y versiones de los plugins en la base de datos
         foreach ($pluginsAll as $plugin) {
-            $plugins[$plugin->slug] = $plugin->version; 
+            $plugins[$plugin->slug] = [
+                'version' => $plugin->version,
+                'name' => $plugin->name,
+                'project_id' => $plugin->project
+            ];
         }
 
         $vulnerabilities = [];
 
-        foreach ($plugins as $plugin => $version) {
+        foreach ($plugins as $plugin => $pluginData) {
             $response = Http::get("https://www.wpvulnerability.net/plugin/{$plugin}/");
 
             if ($response->successful()) {
@@ -67,24 +71,26 @@ class ApiController extends Controller
                         $vulnVersion = $vuln['operator']['max_version'] ?? 'N/A';
 
                         // Comparar versiones y filtrar
-                        if ($vulnVersion !== 'N/A' && version_compare($vulnVersion, $version, '=')) {
+                        if ($vulnVersion !== 'N/A' && version_compare($vulnVersion, $pluginData['version'], '=')) {
 
                             if ($vuln['impact'] == []) { 
                                 $vulnerabilities[] = [
-                                    'plugin' => $plugin,
+                                    'plugin' => $pluginData['name'],
                                     'version' => $vulnVersion,
                                     'description' => $vuln['source'][1]['description'] ?? 'Sin descripción',
                                     'score' => $vuln['source'][0]['name'] ?? 'Sin datos',
-                                    'severity' => $vuln['source'][0]['link'] ?? 'Sin datos'
+                                    'severity' => $vuln['source'][0]['link'] ?? 'Sin datos',
+                                    'project_id' => $pluginData['project_id']['name']
                                 ];
                             }
                             else { 
                                 $vulnerabilities[] = [
-                                    'plugin' => $plugin,
+                                    'plugin' => $pluginData['name'],
                                     'version' => $vuln['operator']['max_version'] ?? 'N/A',
                                     'description' => $vuln['source'][0]['description'] ?? 'Sin descripción',
                                     'score' => $vuln['impact']['cvss']['score'] ?? 'Sin datos',
-                                    'severity' => $vuln['impact']['cvss']['severity'] ?? 'Sin datos'
+                                    'severity' => $vuln['impact']['cvss']['severity'] ?? 'Sin datos',
+                                    'project_id' => $pluginData['project_id']['name']
                                 ];
                             }
                         }

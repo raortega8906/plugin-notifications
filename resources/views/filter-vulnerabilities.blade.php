@@ -33,10 +33,10 @@
                                 Descripción
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
-                                Puntuación
+                                Gravedad - Enlace
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
-                                Gravedad
+                                Proyecto
                             </th>
                         </tr>
                     </thead>
@@ -56,11 +56,6 @@
                                 <td class="px-6 py-4">
                                     <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
                                         {{ $vuln['description'] }}
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 max-w-xs">
-                                    <div class="text-sm text-[#1b1b18] dark:text-[#EDEDEC]">
-                                        {{ $vuln['score'] }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
@@ -86,10 +81,15 @@
                                                 {{ __('Sin datos') }}
                                             </span>
                                         @elseif($vuln['severity'])
-                                            <span class="text-gray-500 dark:text-gray-400">
+                                            <a href="{{ $vuln['severity'] }}" target="_blank" class="text-gray-500 hover:underline hover:text-red>">
                                                 {{ $vuln['severity'] }}
-                                            </span>
+                                            </a>
                                         @endif
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 max-w-xs">
+                                    <div class="text-sm text-[#1b1b18] dark:text-[#EDEDEC]">
+                                        {{ $vuln['project_id'] }}
                                     </div>
                                 </td>
                             </tr>
