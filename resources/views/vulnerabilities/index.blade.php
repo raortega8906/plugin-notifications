@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Vulnerabilidades de plugins')
+@section('title', 'Historial de vulnerabilidades de plugins registrados')
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
@@ -12,7 +12,7 @@
     </div>
 
     <p class="inline-block py-3 text-[#35415f] text-lm leading-normal" id="historial-vulnerabilidades">
-        Historial de vulnerabilidades de plugins registrados
+        Historial plugins registrados
     </p>
 
     @if (count($vulnerabilities) > 0)
@@ -29,10 +29,7 @@
                                 Versión
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
-                                Descripción
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
-                                Puntuación
+                                Enlace
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
                                 Gravedad
@@ -40,47 +37,42 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-[#161615] divide-y divide-[#e3e3e0] dark:divide-[#3E3E3A]">
-                        @foreach ($vulnerabilities as $vuln)
+                        @foreach ($vulnerabilities as $vulnerabily)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                                        {{ $vuln['plugin'] }}
+                                        {{ $vulnerabily['plugin'] }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                                        {{ $vuln['version'] }}
+                                        {{ $vulnerabily['version'] }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                                        {{ $vuln['description'] }}
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 max-w-xs">
-                                    <div class="text-sm text-[#1b1b18] dark:text-[#EDEDEC]">
-                                        {{ $vuln['score'] }}
+                                        {{ $vulnerabily['description'] }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                                        @if($vuln['severity'] == 'l')
+                                        @if($vulnerabily['severity'] == 'l')
                                             <span class="text-green-500 dark:text-green-400">
                                                 {{ __('Baja') }}
                                             </span>
-                                        @elseif($vuln['severity'] == 'm')
+                                        @elseif($vulnerabily['severity'] == 'm')
                                             <span class="text-yellow-500 dark:text-yellow-400">
                                                 {{ __('Mediana') }}
                                             </span>
-                                        @elseif($vuln['severity'] == 'h')
+                                        @elseif($vulnerabily['severity'] == 'h')
                                             <span class="text-red-500 dark:text-red-400">
                                                 {{ __('Alta') }}
                                             </span>
-                                        @elseif($vuln['severity'] == 'c')
+                                        @elseif($vulnerabily['severity'] == 'c')
                                             <span class="text-red-500 dark:text-red-400">
                                                 {{ __('Crítica') }}
                                             </span>
-                                        @elseif($vuln['severity'] == 'Sin datos')
+                                        @elseif($vulnerabily['severity'] == 'Sin datos')
                                             <span class="text-gray-500 dark:text-gray-400">
                                                 {{ __('Sin datos') }}
                                             </span>
