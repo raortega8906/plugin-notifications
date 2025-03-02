@@ -13,7 +13,7 @@
     </div>
 
     <p class="inline-block py-3 text-[#35415f] text-lm leading-normal" id="historial-vulnerabilidades">
-        Vulnerabilidades por version de plugins
+        Vulnerabilidades por versión de plugins
     </p>
 
     @if (count($vulnerabilities) > 0)
