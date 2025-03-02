@@ -6,7 +6,7 @@
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
         <a href="" 
-        class="inline-block px-5 py-1.5 border-[#35415f] hover:border-[#1915014a] border text-[#35415f] rounded-sm text-sm leading-normal">
+            class="inline-block px-5 py-1.5 border-[#35415f] hover:border-[#1915014a] border text-[#35415f] rounded-sm text-sm leading-normal">
             Buscar vulnerabilidades
         </a>
     </div>
@@ -14,6 +14,10 @@
     {{-- Test --}}
 
     {{-- End test --}}
+
+    <p class="inline-block py-3 text-[#35415f] text-lm leading-normal">
+        Historial de vulnerabilidades de plugins registrados
+    </p>
 
     @if (count($vulnerabilities) > 0)
         <div class="bg-white dark:bg-[#161615] shadow-md rounded-lg overflow-hidden">
@@ -29,7 +33,7 @@
                                 Vulnerabilidad
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
-                                Versión Afectada
+                                Versión
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#706f6c] dark:text-[#A1A09A] uppercase tracking-wider">
                                 Descripción

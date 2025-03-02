@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\PluginController;
 use App\Http\Controllers\ProjectController;
+use App\Models\Plugin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,7 +11,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $plugins = Plugin::all();
+
+    return view('dashboard', compact('plugins'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Rutas de proyectos
