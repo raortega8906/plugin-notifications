@@ -12,11 +12,10 @@
         </a>
     </div>
 
-    <p class="inline-block py-3 text-[#35415f] text-lm leading-normal" id="historial-vulnerabilidades">
-        Vulnerabilidades por versión de plugins
-    </p>
-
     @if (count($vulnerabilities) > 0)
+    <p class="inline-block py-3 text-[#35415f] text-lm leading-normal" id="historial-vulnerabilidades">
+        Las vulnerabilidades encontradas son de las versiones actuales y superiores de los plugins.
+    </p>
         <div class="bg-white dark:bg-[#161615] shadow-md rounded-lg overflow-hidden">
             <!-- Habilita el scroll horizontal sin ocultar contenido -->
             <div class="overflow-x-auto">

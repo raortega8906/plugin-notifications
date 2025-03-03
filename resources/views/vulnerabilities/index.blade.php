@@ -12,7 +12,7 @@
     </div>
 
     <p class="inline-block py-3 text-[#35415f] text-lm leading-normal" id="historial-vulnerabilidades">
-        Historial plugins registrados
+        Historial de vulnerabilidades de plugins registrados.
     </p>
 
     @if (count($vulnerabilities) > 0)
