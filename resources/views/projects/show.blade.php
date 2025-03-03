@@ -11,6 +11,20 @@
         </a>
     </div>
 
+    @if(session('danger'))
+        <div id="alert-danger" class="bg-[#f53003] text-white text-sm px-4 py-2 rounded-sm mb-4 flex justify-between items-center">
+            {{ session('danger') }}
+            <button onclick="closeAlert('alert-danger')" class="ml-4 text-white font-bold">X</button>
+        </div>
+    @endif
+
+    @if(session('success'))
+        <div id="alert-success" class="bg-[#329232] text-white text-sm px-4 py-2 rounded-sm mb-4 flex justify-between items-center">
+            {{ session('success') }}
+            <button onclick="closeAlert('alert-success')" class="ml-4 text-white font-bold">X</button>
+        </div>
+    @endif
+
     @if ($plugins->count() > 0)
         <div class="bg-white dark:bg-[#161615] shadow-md rounded-lg overflow-hidden">
             <table class="min-w-full divide-y divide-[#e3e3e0] dark:divide-[#3E3E3A]">
@@ -53,7 +67,7 @@
                                     Editar
                                 </a>
                                 |
-                                <form action="{{ route('plugins.destroy', ['project' => $project, 'plugin' => $plugin]) }}" method="POST">
+                                <form action="{{ route('plugins.destroy', ['project' => $project, 'plugin' => $plugin]) }}" method="POST" onsubmit="return confirmDelete(event)">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-[#f53003] dark:text-[#FF4433] hover:text-[#d42a02] dark:hover:text-[#ff6b5b]">
@@ -72,4 +86,27 @@
         </div>
     @endif
 </div>
+
+<script>
+    function closeAlert(id) {
+        document.getElementById(id).style.display = "none";
+    }
+
+    setTimeout(() => {
+        let dangerAlert = document.getElementById('alert-danger');
+        let successAlert = document.getElementById('alert-success');
+
+        if (dangerAlert) dangerAlert.style.display = "none";
+        if (successAlert) successAlert.style.display = "none";
+    }, 3000);
+
+    function confirmDelete(event) {
+        event.preventDefault();
+
+        if (confirm("¿Estás seguro de que deseas eliminar este plugin? Esta acción no se puede deshacer.")) {
+            event.target.submit();
+        }
+    }
+</script>
+
 @endsection
