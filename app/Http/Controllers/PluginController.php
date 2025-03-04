@@ -41,14 +41,6 @@ class PluginController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Plugin $plugin)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Project $project, Plugin $plugin) 

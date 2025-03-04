@@ -48,7 +48,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        // $plugins = $project->plugins;
         $plugins = Plugin::where('project_id', $project->id)->latest()->get();;
 
         return view('projects.show', compact('project', 'plugins'));
