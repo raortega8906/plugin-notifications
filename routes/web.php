@@ -38,4 +38,9 @@ Route::get('/pluginsmonitoring', [PluginController::class, 'pluginsMonitoring'])
 Route::get('/vulnerabilities', [VulnerabilityController::class, 'index'])->name('vulnerabilities.index');
 Route::get('/vulnerabilities/filter', [VulnerabilityController::class, 'filterVulnerabilities'])->name('vulnerabilities.vulnerabilities');
 
+// Rutas de notificaciones
+Route::get('/notifications', function () {
+    return view('notifications.index');
+})->name('notifications.index');
+
 require __DIR__.'/auth.php';
