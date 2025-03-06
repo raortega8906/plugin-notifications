@@ -32,9 +32,9 @@
             </svg>
             <h2 class="font-medium">Plugins Monitoreados</h2>
         </div>
-        @if ($plugins->count() > 0)
+        @if ($pluginsAll->count() > 0)
             <p class="text-[#706f6c] dark:text-[#A1A09A] text-sm mb-4">
-                Actualmente hay {{ $plugins->count() }} plugins registrados para monitorear.
+                Actualmente hay {{ $pluginsAll->count() }} plugins registrados para monitorear.
             </p>
             <a href="{{ route('plugins.monitoring') }}" class="text-[#f53003] dark:text-[#FF4433] text-sm font-medium underline underline-offset-4 inline-flex items-center">
                 <span>Ver plugins</span>
@@ -77,5 +77,57 @@
         </a>
     </div>
 </div>
-@endsection
 
+<div class="bg-white dark:bg-[#161615] p-6 mt-8 rounded-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="font-medium text-lg">Resumen General</h2>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Última actualización: {{ now()->locale('es')->translatedFormat('l, j \d\e F \d\e Y') }}</span>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 text-center">
+        <div>
+            <h3 class="text-2xl font-semibold text-[#f53003] dark:text-[#FF4433]">{{ count($vulnerabilities) }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Vulnerabilidades</p>
+        </div>
+        <div>
+            <h3 class="text-2xl font-semibold text-green-500">Controlada</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Estado de la empresa según vulnerabilidades</p>
+        </div>
+        <div>
+            <h3 class="text-2xl font-semibold text-blue-500">{{ $pluginsAll->count() }}</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Plugins Monitoreados</p>
+        </div>
+    </div>
+
+    <div class="mt-6">
+        <div id="vulnerabilitiesChart"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var options = {
+            series: [{
+                name: "Vulnerabilidades",
+                data: [20, 15, 7, 18, 9, 12, 10] // Reemplázalo con datos reales de PHP
+            }],
+            chart: {
+                type: "line",
+                height: 250
+            },
+            xaxis: {
+                categories: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
+            },
+            colors: ["#f53003"],
+            stroke: {
+                curve: "smooth"
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#vulnerabilitiesChart"), options);
+        chart.render();
+    });
+</script>
+
+@endsection

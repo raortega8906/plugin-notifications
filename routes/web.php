@@ -4,6 +4,7 @@ use App\Http\Controllers\PluginController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\VulnerabilityController;
 use App\Models\Plugin;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,9 +12,45 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $plugins = Plugin::all();
+        $pluginsAll = Plugin::latest()->get();
+        $plugins = [];
 
-    return view('dashboard', compact('plugins'));
+        foreach ($pluginsAll as $plugin) {
+            $plugins[] = [
+                'slug' => $plugin->slug,
+                'version' => $plugin->version,
+                'name' => $plugin->name,
+                'project_id' => $plugin->project
+            ];
+        }
+
+        $vulnerabilities = [];
+
+        foreach ($plugins as $pluginData) {
+            $response = Http::get("https://www.wpvulnerability.net/plugin/{$pluginData['slug']}/");
+
+            if ($response->successful()) {
+                $data = $response->json();
+
+                if (!empty($data['data']['vulnerability'])) {
+                    foreach ($data['data']['vulnerability'] as $vulnerability) {
+                        $vulnVersion = $vulnerability['operator']['max_version'] ?? 'N/A';
+
+                        if ($vulnVersion !== 'N/A' && version_compare($vulnVersion, $pluginData['version'], '>=')) {
+                            $vulnerabilities[] = [
+                                'plugin' => $pluginData['name'],
+                                'version' => $vulnVersion,
+                                'link' => $vulnerability['source'][0]['link'] ?? 'Sin enlace',
+                                'severity' => $vulnerability['impact']['cvss']['severity'] ?? 'Sin datos',
+                                'project_id' => $pluginData['project_id']['name']
+                            ];
+                        }
+                    }
+                }
+            }
+        }
+
+        return view('dashboard', compact('pluginsAll', 'vulnerabilities'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Rutas de proyectos
