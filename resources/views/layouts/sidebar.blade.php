@@ -23,9 +23,4 @@
         </a>
     </nav>
     
-    {{-- <footer class="mt-auto p-4">
-        <a href="https://portfolio.wpcache.es" target="_blank" class="text-[#1b1b18] dark:text-[#EDEDEC] hover:text-[#f53003] dark:hover:text-[#FF4433]">
-            Rafael A. Ortega
-        </a>
-    </footer> --}}
 </aside>
