@@ -110,7 +110,7 @@
         var options = {
             series: [{
                 name: "Vulnerabilidades",
-                data: [20, 15, 7, 18, 9, 12, 10] // Reemplázalo con datos reales de PHP
+                data: [20, 15, 7, 18, 9, 12, 10] 
             }],
             chart: {
                 type: "line",
