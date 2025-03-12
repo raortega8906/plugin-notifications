@@ -104,7 +104,7 @@
     </div>
 </div>
 
-{{-- scripts chart --}}
+{{-- scripts chart statistics --}}
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
